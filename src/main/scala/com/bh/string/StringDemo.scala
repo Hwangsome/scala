@@ -1,5 +1,8 @@
 package com.bh.string
 
+/**
+ * 字符串模板
+ */
 object StringDemo {
   def main(args: Array[String]): Unit = {
     val str = "hello world"

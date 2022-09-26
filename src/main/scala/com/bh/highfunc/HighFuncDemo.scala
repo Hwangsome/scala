@@ -5,6 +5,16 @@ package com.bh.highfunc
  * 在Scala中函数是“一等公民”，所以允许定义高阶函数。
  * 这里的术语可能有点让人困惑，我们约定，使用函数值作为参数，
  * 或者返回值为函数值的“函数”和“方法”，均称之为“高阶函数”。
+ *
+ * foreach	遍历集合
+ * map	转换集合
+ * flatmap	扁平化操作
+ * sorted	默认排序
+ * sortBy	按照指定字段排序
+ * sortWith	自定义排序
+ * groupBy	按指定条件分组
+ * reduce	聚合计算
+ * fold	折叠计算
  */
 object HighFuncDemo {
   def main(args: Array[String]): Unit = {
@@ -27,5 +37,18 @@ object HighFuncDemo {
     newSalaries2.foreach(println)
     val newSalaries3 = salaries.map(_ * 2)
     newSalaries3.foreach(println)
+
+
+    /**
+     * foreach
+     */
+    val list = List(1, 2, 3, 4, 5)
+      //函数格式 (函数参数列表) => {函数体}
+      list.foreach((x:Int) => {println(x)})
+      //简写格式1 通过类型推断省略参数数据类型
+      list.foreach(x => println(x))
+      //简写格式2 函数参数只在函数体出现一次，且函数体没有涉及复杂使用，可以使用下划线简化
+      list.foreach(println(_))
+
   }
 }

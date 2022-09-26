@@ -121,6 +121,35 @@ scala> test.count = 7
 test.count: Int = 7
 ```
 9. 变长参数的转化
+```scala
+
+def sum(args: Int*) = {
+     var result = 0
+     for (arg <- args) result += arg
+     result
+      }
+
+object demo {
+  val s = sum(1,2,3,4,5)
+  s: Int = 15
+
+  /**
+   * error: type mismatch;
+   * found   : scala.collection.immutable.Range.Inclusive
+   * required: Int
+   * val s = sum(1 to 5)
+   * 这种情况必须在后面写上: _*将1 to 5转化为参数序列
+   */
+  //val s = sum(1 to 5)
+
+  /**
+   * 这个是正确的
+   */
+  val s = sum(1 to 5: _*)
+}
+
+
+```
 10. 将方法转换成函数
     我们都知道Scala中方法与函数的不同点。其中最显著的不同就在于，函数在Scala中是一种对象实例，因此它可以赋值给变量，也可以作为参数。如果方法在赋值时直接写名称的话，编译器会认为是对方法的调用，因此会报没有参数列表的错误。在方法名称后加一个下划线，会将其转化为偏应用函数（partially applied function），就能直接赋值了。例：
 ```shell
